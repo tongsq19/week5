@@ -19,8 +19,6 @@ public class EmployeeController {
         return repository.findAll();
     }
 
-
-
     @PostMapping("/employee")
     Employee addEmployee(@RequestBody Employee newEmployee) {
         return repository.save(newEmployee);
@@ -40,6 +38,11 @@ public class EmployeeController {
         employee.setName(newEmployee.getName());
         employee.setGender(newEmployee.getGender());
         return repository.save(employee);
+    }
+
+    @DeleteMapping("/employee/{id}")
+    void deleteEmployee(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 
 }
